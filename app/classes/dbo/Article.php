@@ -4,7 +4,7 @@
  */
 require_once 'P2DemoObject.php';
 
-class DBO_Article extends P2DemoObject 
+class DBO_Article extends FWArticle 
 {
     ###START_AUTOCODE
     /* the code below is auto generated do not remove the above tag */
