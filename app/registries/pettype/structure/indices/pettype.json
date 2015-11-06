@@ -1,0 +1,5 @@
+[
+	{"name": "idxPettypeName", 			"fields": "name",					"type": "index"},
+	{"name": "idxPettypeMemo", 		"fields": "memo",					"type": "index"},
+	{"name": "idxPettypeClosed", 			"fields": "closed",					"type": "index"}
+]

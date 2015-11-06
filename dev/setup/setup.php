@@ -6,13 +6,13 @@
  *
  */
 
-	define("FULL_INSTANCE_ROOT", "http://localhost:8082");
-	define("DOC_ROOT", "/usr/share/nginx/www");
+	define("FULL_INSTANCE_ROOT", "http://localhost");
+	define("DOC_ROOT", "C:\\xampp\\htdocs");
 
-	define("INSTANCE_WEB", "/p2demo/dev/");
+	define("INSTANCE_WEB", "/project1/p2demo/dev/");
 
-	define("WFW_WEB", "/pm/v3/");
-	define("APP_WEB", "/p2demo/app/");
+	define("WFW_WEB", "/project1/p2/");
+	define("APP_WEB", "/project1/p2demo/app/");
 	define("L3RD_WEB", "/3rd/");
 
  	define("WFW_ROOT", DOC_ROOT . WFW_WEB);
@@ -49,7 +49,7 @@
 	//UserFilesContextProvider
 	define("CONTEXT_PROVIDER_FLAVOR", "UserFilesContextProvider");
 
-	define("SETUP_CSS_MAIN", WFW_WEB . "ui/wfw.css");
+	define("SETUP_CSS_MAIN", WFW_WEB . "ui\wfw.css");
 	define("SETUP_3RD_COMBOGRID_CSS", L3RD_WEB . "combogrid-1.5.0/resources/css/smoothness/jquery-ui-1.8.9.custom.css");
 	define("SETUP_3RD_COMBOGRID_CSS2", L3RD_WEB . "combogrid-1.5.0/resources/css/smoothness/jquery.ui.combogrid.css");
 	define("SETUP_HOTKEYS", L3RD_WEB . "jquery.hotkeys.js");

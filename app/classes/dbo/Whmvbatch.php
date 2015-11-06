@@ -24,13 +24,13 @@ class DBO_Whmvbatch extends WhmvbatchParent
     public $companyDstId;                    // int(11)  not_null multiple_key group_by
     public $locked;                          // tinyint(4)  not_null group_by
     public $memo;                            // blob(65535)  not_null blob
-    public $totalCost;                       // decimal(20)  not_null group_by
-    public $totalPrice;                      // decimal(20)  not_null group_by
+    public $totalCost;                       // decimal(20)  not_null
+    public $totalPrice;                      // decimal(20)  not_null
     public $mdCreated;                       // datetime(19)  
     public $mdUpdated;                       // datetime(19)  
     public $mdCreatorId;                     // int(11)  multiple_key group_by
     public $mdUpdaterId;                     // int(11)  multiple_key group_by
-    public $whinventoryId;                   // int(11)  group_by
+    public $whinventoryId;                   // int(11)  multiple_key group_by
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

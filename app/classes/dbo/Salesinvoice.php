@@ -21,9 +21,9 @@ class DBO_Salesinvoice extends P2DemoObject
     public $payerId;                         // int(11)  not_null group_by
     public $locked;                          // tinyint(4)  not_null group_by
     public $memo;                            // blob(65535)  not_null blob
-    public $totalNoVat;                      // decimal(20)  not_null group_by
-    public $totalVat;                        // decimal(20)  not_null group_by
-    public $totalWithVat;                    // decimal(20)  not_null group_by
+    public $totalNoVat;                      // decimal(20)  not_null
+    public $totalVat;                        // decimal(20)  not_null
+    public $totalWithVat;                    // decimal(20)  not_null
     public $mdCreated;                       // datetime(19)  
     public $mdUpdated;                       // datetime(19)  
     public $mdCreatorId;                     // int(11)  group_by

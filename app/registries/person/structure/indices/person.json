@@ -1,0 +1,7 @@
+[
+	{"name": "idxPersonCode", 			"fields": "code","type": "index"},
+	{"name": "idxPersonFirstname", 			"fields": "firstname","type": "index"},
+	{"name": "idxPersonLastname", 			"fields": "lastname","type": "index"},
+	{"name": "idxPersonBirthday", 			"fields": "birthday","type": "index"},
+	{"name": "idxPersonMemo", 			"fields": "memo","type": "index"},
+]

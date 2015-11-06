@@ -1,0 +1,5 @@
+[
+	{"name": "idxLocationCode", 			"fields": "code","type": "index"},
+	{"name": "idxLocationName", 			"fields": "name","type": "index"},
+	{"name": "idxLocationInfo", 			"fields": "info","type": "index"}
+]

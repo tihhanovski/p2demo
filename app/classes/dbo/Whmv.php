@@ -20,17 +20,17 @@ class DBO_Whmv extends WhmvParent
     public $whDstId;                         // int(11)  not_null multiple_key group_by
     public $companySrcId;                    // int(11)  not_null multiple_key group_by
     public $companyDstId;                    // int(11)  not_null multiple_key group_by
-    public $quantity;                        // decimal(20)  not_null group_by
-    public $cost;                            // decimal(20)  not_null group_by
-    public $price;                           // decimal(20)  not_null group_by
-    public $discount;                        // decimal(20)  not_null group_by
+    public $quantity;                        // decimal(20)  not_null
+    public $cost;                            // decimal(20)  not_null
+    public $price;                           // decimal(20)  not_null
+    public $discount;                        // decimal(20)  not_null
     public $memo;                            // blob(65535)  not_null blob
     public $mdCreated;                       // datetime(19)  
     public $mdUpdated;                       // datetime(19)  
     public $mdCreatorId;                     // int(11)  multiple_key group_by
     public $mdUpdaterId;                     // int(11)  multiple_key group_by
-    public $iqp;                             // decimal(20)  not_null group_by
-    public $oqp;                             // decimal(20)  not_null group_by
+    public $iqp;                             // decimal(20)  not_null
+    public $oqp;                             // decimal(20)  not_null
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
