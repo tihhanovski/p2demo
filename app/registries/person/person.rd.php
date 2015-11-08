@@ -10,15 +10,17 @@
 	 */
 	class _RegistryDescriptor extends RegistryDescriptor
 	{
-		public $gridSql = "select id, code, firstname, lastname, birthday, memo from person";
-
+		//public $gridSql = "select id, code, firstname, lastname, birthday, memo from person";
+        public $gridSql = "select person.id, person.code, person.firstname, person.lastname, person.birthday,
+		person.memo, max(pet.birthday) as aaa,min(pet.birthday) as bbb,sum(pet.weight) as ccc from person join pet 
+		on (person.id=pet.ownerId) group by person.id";
 		/**
 		 * {@inheritdoc}
 		 */
 		public function getGrid()
 		{
 			$ret = new RegFlexiGrid();
-			$ret->sortname = "firstname";
+			$ret->sortname = "person.firstname";
 			$ret->sortorder = "asc";
 			//$ret->addColumn(new StyleColumn());
 			//$ret->addClosedIconColumn();
@@ -35,6 +37,31 @@
 	
 		protected function getSimpleformComponents($obj)
 		{
+			/*		
+		$db = new PDO('mysql:host=localhost;dbname=p2demo;charset=utf8', 'root', 'password');
+		//$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $stmt=$db->query("select sum(weight) from pet where ownerId=id");
+		$stmt->bindValue(":id", $this->id, PDO::PARAM_INT);
+		$stmt->execute();
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$this->setValue("totalWeight","asdads");
+		
+		//$this->setValue("totalWeight","yyyy");
+		
+        $stmt=$db->query("select min(birthday) from pet where ownerId=?");
+		$stmt->execute(array($this->id));
+		//$stmt->execute();
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$this->setValue("oledestPet",$rows[0][0]);
+
+        $stmt=$db->query("select max(birthday) from pet where ownerId=?");
+		$stmt->execute(array($this->id));
+		//$stmt->execute();
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$this->setValue("youngestPet",$rows[0][0]);
+	    */
+		    //$this->setValue("totalWeight","yyytty");
 			$cols = array();
 
 			$cols[] = new DetailGridColumn("typeId", "Type", "select", 16, getSelectOptions("select id, name from pettype where closed = 0 order by name"), "gridCellRight");
@@ -42,17 +69,15 @@
 			$cols[] = new DetailGridColumn("birthday", "Birthday", "textbox", 4, null, "gridCellRight");
 			$cols[] = new DetailGridColumn("weight", "Weight", "double", 4, null, "gridCellRight");
 
+			
 			return array(
-				textbox($obj, "code"),
+				textbox($obj, "code", "Code"),
 				textbox($obj, "firstname", "Firstname"),
 				textbox($obj, "lastname", "Lastname"),
 				datepicker($obj, "birthday", "Birthday"),
 				//textbox($obj, "birthday"),
 				textarea($obj, "memo"),				
-  			    $this->ui_rowsGrid($cols),
-				textbox($obj, "totalWeight", "Total weight"),
-				textbox($obj, "oledestPet", "Oldest pet"),
-				textbox($obj, "youngestPet", "Youngest pet")
+  			    $this->ui_rowsGrid($cols)
 			);
 		}
 		/*

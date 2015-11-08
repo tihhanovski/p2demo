@@ -32,7 +32,7 @@ class DBO_Person extends P2DemoObject
 	);	
 	
 	public function __construct() {
-		
+/*		
 		$db = new PDO('mysql:host=localhost;dbname=p2demo;charset=utf8', 'root', 'password');
 		//$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
@@ -40,11 +40,10 @@ class DBO_Person extends P2DemoObject
 		$stmt->bindValue(":id", $this->id, PDO::PARAM_INT);
 		$stmt->execute();
 		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		$this->setValue("totalWeight",print_r($rows[0]));
+		$this->setValue("totalWeight","asdads");
 		
 		//$this->setValue("totalWeight","yyyy");
 		
-		/*
         $stmt=$db->query("select min(birthday) from pet where ownerId=?");
 		$stmt->execute(array($this->id));
 		//$stmt->execute();
@@ -57,6 +56,7 @@ class DBO_Person extends P2DemoObject
 		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		$this->setValue("youngestPet",$rows[0][0]);
 	    */
+		
 		return true;		
 	}
 	
