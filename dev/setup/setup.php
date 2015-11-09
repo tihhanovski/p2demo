@@ -6,13 +6,13 @@
  *
  */
 
-	define("FULL_INSTANCE_ROOT", "http://localhost");
-	define("DOC_ROOT", "C:\\xampp\\htdocs");
+	define("FULL_INSTANCE_ROOT", "http://localhost:8082");
+	define("DOC_ROOT", "/usr/share/nginx/www");
 
-	define("INSTANCE_WEB", "/project1/p2demo/dev/");
+	define("INSTANCE_WEB", "/p2demo/dev/");
 
-	define("WFW_WEB", "/project1/p2/");
-	define("APP_WEB", "/project1/p2demo/app/");
+	define("WFW_WEB", "/pm/v2/");
+	define("APP_WEB", "/p2demo/app/");
 	define("L3RD_WEB", "/3rd/");
 
  	define("WFW_ROOT", DOC_ROOT . WFW_WEB);

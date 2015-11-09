@@ -15,8 +15,8 @@ class DBO_Person extends P2DemoObject
     public $firstname;                       // varchar(100)  not_null
     public $lastname;                        // varchar(100)  not_null
     public $birthday;                        // date(10)  not_null
-    public $memo;                            // blob(65535)  not_null blob
     public $info;                            // blob(65535)  not_null blob
+    public $memo;                            // blob(65535)  not_null blob
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
@@ -28,10 +28,46 @@ class DBO_Person extends P2DemoObject
 
 	protected $formats = array(
        "birthday" =>               FORMAT_DATE,
-       "weight" => FORMAT_FLOAT2
-	);	
-	
-	public function __construct() {
+       "weight" => FORMAT_FLOAT2,
+       "totalWeight" => FORMAT_FLOAT2,
+	);
+
+    /**
+     * {@inheritdoc}
+     */
+    public function childValueChanged($path, $value, $tree)
+    {
+        $this->calcTotals();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function childDeleted($path, $tree)
+    {
+        $this->calcTotals();
+    }
+
+    public function loadAdditionalData()
+    {
+    	$this->calcTotals();
+    }
+
+    public function calcTotals()
+    {
+    	$tw = 0;
+    	if(is_array($this->rows))
+    		foreach ($this->rows as $row)
+    			if(!$row->willBeDeleted())
+	    		{
+	    			$tw += $row->weight;
+	    		}
+
+	    $this->setValue("totalWeight", $tw);
+    }
+
+
+	//public function __construct() {
 /*		
 		$db = new PDO('mysql:host=localhost;dbname=p2demo;charset=utf8', 'root', 'password');
 		//$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -57,8 +93,8 @@ class DBO_Person extends P2DemoObject
 		$this->setValue("youngestPet",$rows[0][0]);
 	    */
 		
-		return true;		
-	}
+//		return true;		
+//	}
 	
 	public function validate_code() {
 		if(strlen($this->code)>7) {

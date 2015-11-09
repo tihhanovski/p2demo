@@ -14,9 +14,9 @@ class DBO_Whinventoryrow extends P2DemoObject
     public $whinventoryId;                   // int(11)  not_null multiple_key group_by
     public $articleId;                       // int(11)  not_null multiple_key group_by
     public $modifierId;                      // int(11)  not_null group_by
-    public $quantity;                        // decimal(20)  
-    public $realQuantity;                    // decimal(20)  
-    public $cost;                            // decimal(20)  
+    public $quantity;                        // decimal(20)  group_by
+    public $realQuantity;                    // decimal(20)  group_by
+    public $cost;                            // decimal(20)  group_by
     public $memo;                            // blob(65535)  not_null blob
     public $mdCreated;                       // datetime(19)  
     public $mdUpdated;                       // datetime(19)  
