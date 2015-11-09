@@ -40,7 +40,7 @@
 
 			$cols[] = new DetailGridColumn("typeId", "Type", "select", 16, getSelectOptions("select id, name from pettype where closed = 0 order by name"), "gridCellRight");
 			$cols[] = new DetailGridColumn("name", "Name", "textbox", 4, null, "gridCellRight");
-			$cols[] = new DetailGridColumn("birthday", "Birthday", "textbox", 4, null, "gridCellRight");
+			$cols[] = new DetailGridColumn("birthday", "Birthday", "datepicker", 4, null, "gridCellRight");
 			$cols[] = new DetailGridColumn("weight", "Weight", "double", 4, null, "gridCellRight");
 
 			

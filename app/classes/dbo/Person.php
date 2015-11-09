@@ -26,7 +26,7 @@ class DBO_Person extends P2DemoObject
     );
 
 	protected $formats = array(
-       "birthday" =>               FORMAT_DATE,
+       "birthday" =>               FORMAT_TIME,
        "weight" => FORMAT_FLOAT2,
        "totalWeight" => FORMAT_FLOAT2,
 	);
