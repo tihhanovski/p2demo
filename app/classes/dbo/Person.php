@@ -1,4 +1,4 @@
-va<?php
+<?php
 /**
  * Table Definition for person
  */
@@ -22,8 +22,7 @@ class DBO_Person extends P2DemoObject
     ###END_AUTOCODE
 
     protected $validators = array(
-        "code" => VALIDATION_CLASS_METHOD,
-        "id" => VALIDATION_CLASS_METHOD		
+        "code" => VALIDATION_CLASS_METHOD
     );
 
 	protected $formats = array(
@@ -56,45 +55,37 @@ class DBO_Person extends P2DemoObject
     public function calcTotals()
     {
     	$tw = 0;
+		$lowestDate = 99999999999999999999;
+		$highestDate = -99999999999999999999;		
+		if(count($this->rows)>0) {
+			$lowestDate = strtotime($this->rows[0]->birthday);
+			$highestDate = strtotime($this->rows[0]->birthday);			
+		}
+
     	if(is_array($this->rows))
+			
     		foreach ($this->rows as $row)
     			if(!$row->willBeDeleted())
 	    		{
 	    			$tw += $row->weight;
-	    		}
-
-	    $this->setValue("totalWeight", $tw);
-    }
-
-
-	//public function __construct() {
-/*		
-		$db = new PDO('mysql:host=localhost;dbname=p2demo;charset=utf8', 'root', 'password');
-		//$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-        $stmt=$db->query("select sum(weight) from pet where ownerId=id");
-		$stmt->bindValue(":id", $this->id, PDO::PARAM_INT);
-		$stmt->execute();
-		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		$this->setValue("totalWeight","asdads");
+					if(strtotime($row->birthday) < $lowestDate){
+						$lowestDate = strtotime($row->birthday);
+					}
+	    		    if(strtotime($row->birthday) > $highestDate){
+						$highestDate = strtotime($row->birthday);
+					}
+				}
 		
-		//$this->setValue("totalWeight","yyyy");
+		if($lowestDate==99999999999999999999) $lowestDate="";
+		 else $lowestDate=date( 'd.m.y', $lowestDate);
+		if($highestDate==-99999999999999999999) $highestDate="";
+         else $highestDate=date( 'd.m.y', $highestDate);		
 		
-        $stmt=$db->query("select min(birthday) from pet where ownerId=?");
-		$stmt->execute(array($this->id));
-		//$stmt->execute();
-		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		$this->setValue("oledestPet",$rows[0][0]);
-
-        $stmt=$db->query("select max(birthday) from pet where ownerId=?");
-		$stmt->execute(array($this->id));
-		//$stmt->execute();
-		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		$this->setValue("youngestPet",$rows[0][0]);
-	    */
-		
-//		return true;		
-//	}
+	    $this->setValue("totalWeight", $tw);		
+		$this->setValue("oldestpetbday", $lowestDate);
+	    $this->setValue("youngestpetbday", $highestDate);
+		return true;
+	}
 	
 	public function validate_code() {
 		if(strlen($this->code)>7) {
