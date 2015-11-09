@@ -19,4 +19,12 @@ class DBO_Pet extends P2DemoObject
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
+
+    public $formats = array(
+        "birthday" => FORMAT_DATE,
+        "weight" => FORMAT_FLOAT2,
+        );
+
+    public $validators = array(
+        "weight" => VALIDATION_NOT_EMPTY);
 }

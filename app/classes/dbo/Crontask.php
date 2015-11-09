@@ -14,7 +14,7 @@ class DBO_Crontask extends P2DemoObject
     public $name;                            // varchar(100)  not_null
     public $started;                         // datetime(19)  
     public $finished;                        // datetime(19)  
-    public $log;                             // blob(-1)  not_null blob
+    public $log;                             // blob(4294967295)  not_null blob
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

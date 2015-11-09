@@ -6,6 +6,7 @@
 
 	app()->setTranslations(
 		array(
-			"hello" => "hello!"
+			"hello" => "hello!",
+			"ro_person" => "Persons",
 		)
 	);

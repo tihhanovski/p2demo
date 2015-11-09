@@ -4,5 +4,5 @@ CREATE TABLE person (
   firstname varchar(100) not null,
   lastname varchar(100) not null,
   birthday date not null,  
-  info text not null
+  memo text not null
 ) COMMENT='Persons'

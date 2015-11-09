@@ -11,9 +11,9 @@
 	class _RegistryDescriptor extends RegistryDescriptor
 	{
 		//public $gridSql = "select id, code, firstname, lastname, birthday, memo from person";
-        public $gridSql = "select person.id, person.code, person.firstname, person.lastname, person.birthday,
-		person.memo, max(pet.birthday) as aaa,min(pet.birthday) as bbb,sum(pet.weight) as ccc from person join pet 
-		on (person.id=pet.ownerId) group by person.id";
+        public $gridSql = "select p.id, p.code, p.firstname, p.lastname, p.birthday,
+			p.memo
+			from person p";
 		/**
 		 * {@inheritdoc}
 		 */
@@ -28,9 +28,8 @@
 			$ret->addColumn(new MGridColumn("Code", "code", "code", 100));
 			$ret->addColumn(new MGridColumn("Firstname", "firstname", "firstname", 100));
 			$ret->addColumn(new MGridColumn("Lastname", "lastname", "lastname", 100));
-			$ret->addColumn(new MGridColumn("Birthday", "birthday", "birthday", 50));
-			$ret->addColumn(new MGridColumn("Memo", "memo", "memo", 500));						
-			
+			$ret->addColumn(new MGridColumn("Birthday", "birthday", "birthday", 70, "L", FORMAT_DATE));
+			$ret->addColumn(new MGridColumn("Memo", "memo", "memo", 500));
 			return $ret;
 		}
 
@@ -77,7 +76,8 @@
 				datepicker($obj, "birthday", "Birthday"),
 				//textbox($obj, "birthday"),
 				textarea($obj, "memo"),				
-  			    $this->ui_rowsGrid($cols)
+  			    $this->ui_rowsGrid($cols),
+  			    staticValue($obj, "totalWeight", "Total weight"),
 			);
 		}
 		/*
@@ -93,7 +93,6 @@
 				"person" => array(
 					"rows" => "pet",
 					),
-				"pettype" => array()
 				);
 		}
 
